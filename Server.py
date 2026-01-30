@@ -1,11 +1,16 @@
 import asyncio
 from PriceWb import wbPrice
-f = [655919326, 550070961, 505535663]
-b = [1073, 9277, 1568]
-a = []
-for i in f:
-    price = asyncio.run(wbPrice(i))
-    a.append(price)
-print(b)
-print(a)
+articles = [655919326, 550070961, 505535663, 499118925, 608718068]
+TruePrice = [1073, 9277, 1568, 2948, 3704]
+AppPrice = []
+
+for articl in articles:
+    price = asyncio.run(wbPrice(articl))
+    AppPrice.append(price)
+
+print(TruePrice)
+print(AppPrice)
+print(AppPrice == TruePrice)
 #fastapi dev Server.py
+#С ВБ кошельком скидка около 2% (от 2% до 8%)
+# На занятии сделать
