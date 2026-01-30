@@ -3,9 +3,9 @@ from itertools import product
 
 from playwright.async_api import async_playwright
 
-TARGET_NM = "550070901"
-
-async def main():
+async def main(TARGET_NM) -> int:
+    global price
+    price = -1
     stop_event = asyncio.Event()
 
     async with async_playwright() as p:
@@ -26,11 +26,11 @@ async def main():
                 try:
                     data = await response.json()
                     print("JSON ПОЛУЧЕН ✅")
-                    print(int(int(data["products"][0]["sizes"][0]["price"]["product"]) / 100))
-                    stop_event.set()  # сигнализируем main
+                    global price
+                    price = int(int(data["products"][0]["sizes"][0]["price"]["product"]) / 100)
+                    stop_event.set()
                 except Exception as e:
                     print("ERROR", e)
-
         page.on("response", handle_response)
 
         await page.goto(
@@ -46,7 +46,7 @@ async def main():
 
         await browser.close()
 
-asyncio.run(main())
-
+asyncio.run(main(550070901))
+print(price)
 
 #fastapi dev Server.py
