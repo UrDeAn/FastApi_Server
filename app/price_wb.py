@@ -1,7 +1,7 @@
 import asyncio
 from playwright.async_api import async_playwright
 
-async def wbPrice(TARGET_NM) -> None:
+async def wb_price(TARGET_NM) -> None:
     stop_event = asyncio.Event()
     price = None  # локальная переменная
 
