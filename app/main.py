@@ -1,7 +1,7 @@
 import asyncio
 from price_wb import wb_price
 import subprocess
-from time import sleep
+from fastapi import FastAPI
 articles = [655919326, 550070961, 505535663, 499118925, 608718068]
 TruePrice = [1073, 9277, 1568, 2948, 3704]
 AppPrice = []
@@ -20,9 +20,11 @@ print(TruePrice)
 print(AppPrice)
 print(AppPrice == TruePrice) # За 1 день 4 цены уже сменились
 
-while True:
-    sleep(5)
-    print("ok")
+app = FastAPI()
+
+@app.get("/item")
+def read_root():
+    return {"message": "Привет! Это простое API на FastAPI."}
 #fastapi dev main.py
 #С ВБ кошельком скидка около 2% (от 2% до 8%)
 # На занятии сделать парсинг артикула с ссылки (веб и из приложения)
