@@ -11,6 +11,6 @@ for articl in articles:
 print(TruePrice)
 print(AppPrice)
 print(AppPrice == TruePrice)
-#fastapi dev Server.py
+#fastapi dev main.py
 #С ВБ кошельком скидка около 2% (от 2% до 8%)
 # На занятии сделать парсинг артикула с ссылки (веб и из приложения)
